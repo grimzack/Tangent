@@ -1,0 +1,11 @@
+# Dev Log for Tangent Project
+# Format:
+# Date - Name
+# Notes
+# ----- (5 dashes)
+
+BEGIN LOG
+-----
+2017.07.05 - Gabe Grimley
+Setting up the initial devLog.txt file.
+-----
