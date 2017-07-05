@@ -1,8 +1,4 @@
 # Dev Log for Tangent Project
-# Format:
-# Date - Name
-# Notes
-# ----- (5 dashes)
 
 BEGIN LOG
 -----
