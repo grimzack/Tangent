@@ -21,14 +21,18 @@ def server_receive_message(conn, addr):
 	while 1:
 	    data = conn.recv(1024)
 	    if not data: break
-	    print 'Received message: ', data
-	    conn.sendall(data)
+	    print 'Broadcasting message: ', data
+	    for cxn in client_cxns:
+	    	cxn.sendall(data)
+	    # conn.sendall(data)
 	conn.close()
 
 client_cxns = []
 client_threads = []
 
 def accept_clients():
+	global client_cxns
+	global client_threads
 	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 	s.bind((HOST, PORT))
 	while 1: 

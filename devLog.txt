@@ -5,3 +5,9 @@ BEGIN LOG
 2017.07.05 - Gabe Grimley
 Setting up the initial devLog.txt file.
 -----
+
+2017.07.07 - ZPG
+
+Thoughts on sending/receiving data from client side:
+
+Initial idea is to have multiple threads, one listening for user input the other listening for server broadcasts.
