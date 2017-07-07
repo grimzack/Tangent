@@ -8,16 +8,38 @@ Example Socket program from https://docs.python.org/2/library/socket.html#exampl
 
 # Echo server program
 import socket
+import threading
 
 HOST = ''                 # Symbolic name meaning all available interfaces
-PORT = 50007              # Arbitrary non-privileged port
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-s.bind((HOST, PORT))
-s.listen(1)
-conn, addr = s.accept()
-print 'Connected by', addr
-while 1:
-    data = conn.recv(1024)
-    if not data: break
-    conn.sendall(data)
-conn.close()
+PORT = 1111              # Arbitrary non-privileged port
+
+
+def server_receive_message(conn):
+	print 'Connected by', addr
+	while 1:
+	    data = conn.recv(1024)
+	    if not data: break
+	    print 'Received message: ', data
+	    conn.sendall(data)
+	conn.close()
+
+client_cxns = []
+client_threads = []
+
+def accept_clients():
+	while 1: 
+		s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+		s.bind((HOST, PORT))
+		s.listen(1)
+		conn, addr = s.accept()
+		client_cxns.append(conn)
+		thread = threading.Thread(target=server_receive_message, args=(conn))
+		client_threads.append(thread)
+		thread.start()
+
+def main():
+	accept_clients()
+
+
+
+

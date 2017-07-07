@@ -8,12 +8,19 @@ Example Socket program from https://docs.python.org/2/library/socket.html#exampl
 
 # Echo client program
 import socket
+import sys
 
 HOST = 'localhost'    # The remote host
-PORT = 50007              # The same port as used by the server
+PORT = 1111              # The same port as used by the server
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((HOST, PORT))
-s.sendall('Hello, world')
-data = s.recv(1024)
+
+while 1:
+	message = raw_input("user$ ")
+	if (message == '/exit'):
+		break
+
+	s.sendall(message)
+	data = s.recv(1024)
 s.close()
 print 'Received', repr(data)
