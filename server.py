@@ -2,8 +2,6 @@
 
 # This serves as the server agent for Tangent Chat Client
 
-import socket
-
 '''
 Example Socket program from https://docs.python.org/2/library/socket.html#example
 '''
